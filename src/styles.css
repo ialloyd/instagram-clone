@@ -21,52 +21,53 @@ h1 {
     margin-bottom: 20px;
 }
 
-.login, .sign-up{
+.login,
+.sign-up {
 
-    border:1px solid lightgrey;
+    border: 1px solid lightgrey;
     display: flex;
     flex-direction: column;
     padding: 30px;
-    width:100%;
+    width: 100%;
 
 }
 
-input{
+input {
 
     margin-bottom: 20px;
-    padding:10px;
-    border:1px solid lightgrey;
+    padding: 10px;
+    border: 1px solid lightgrey;
     outline: none;
-    width:260px;
+    width: 260px;
 }
 
-button{
+button {
 
     padding: 10px;
-    border:none;
-    background-color:rgb(82,194,251);
+    border: none;
+    background-color: rgb(82, 194, 251);
     border-radius: 5px;
-    color:white;
-    font-weight:600;
+    color: white;
+    font-weight: 600;
 }
 
-.altr{
+.altr {
 
-    border:1px solid lightgrey;
+    border: 1px solid lightgrey;
     margin-top: 15px;
     padding: 30px;
     font-size: small;
     text-align: center;
 }
-.altr>span{
+
+.altr>span {
 
     margin-right: 10px;
 }
-.altr>a{
 
-    color:rgb(82,194,251);
+.altr>a {
+
+    color: rgb(82, 194, 251);
     text-decoration: none;
     font-weight: 500;
 }
-
-

@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
+import userContext from '../context/userContext';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
 
     const [cred, setCred] = useState({ name: '', email: '', password: '' });
 
+    const { setToken } = useContext(userContext);
+
+    const navigate = useNavigate();
+
     const { name, email, password } = cred;
 
     function credentials(e) {
 
-        setCred({ ...cred, [e.target.name]: e.target.value })
+        setCred({ ...cred, [e.target.name]: e.target.value });
 
     }
 
@@ -19,8 +25,12 @@ const Signup = () => {
         try {
             const response = await axios.post('https://instagram-express-app.vercel.app/api/auth/signup', { name, email, password })
             setCred({ name: '', email: '', password: '' })
-            console.log(response)
+    
+            setToken(response.data.data.token)
+            localStorage.setItem('token',response.data.data.token)
+
             alert(`Message : ${response.data.message}`)
+            navigate("/profile")
 
         }
         catch (error) {
@@ -39,7 +49,7 @@ const Signup = () => {
                 <h1>Instagram</h1>
                 <input placeholder='Name' name='name' value={name} onChange={event => credentials(event)} />
                 <input placeholder='Email' name='email' value={email} onChange={event => credentials(event)} />
-                <input placeholder='Password' name='password'  type='password' value={password} onChange={event => credentials(event)} />
+                <input placeholder='Password' name='password' type='password' value={password} onChange={event => credentials(event)} />
                 <button onClick={userSignUp}>SignUp</button>
             </div>
             <div className='altr'>

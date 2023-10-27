@@ -17,7 +17,7 @@ const Login = () => {
 
     function credentials(e) {
 
-        setCred({ ...cred, [e.target.name]: e.target.value })
+        setCred({ ...cred, [e.target.name]: e.target.value });
 
     }
 
@@ -26,10 +26,10 @@ const Login = () => {
         try {
             const response = await axios.post('https://instagram-express-app.vercel.app/api/auth/login', { email, password })
             setCred({ email: '', password: '' })
-            console.log(response)
-            setToken(response.data.data.token)
-            console.log(response.data.data.token)
            
+            setToken(response.data.data.token)
+            localStorage.setItem('token', response.data.data.token)
+
             alert(`Message : ${response.data.message}`)
             navigate("/profile")
 
