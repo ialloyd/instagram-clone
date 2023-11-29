@@ -27,7 +27,7 @@ const Profile = () => {
     return (
         <>
             <Navbar />
-            {posts.length > 0 && <> <Container>
+            <Container>
                 <AccountCircleIcon style={{ fontSize: '10rem' }} />
                 <div style={{ marginLeft: '10px' }}>
                     <h1 style={{ marginBottom: '25px' }}>User-{token}</h1>
@@ -38,15 +38,15 @@ const Profile = () => {
                     </Stat>
                 </div>
             </Container>
-                <Container>
-                    <Grid>
-                        {posts.map(post =>
+            <Container>
+                <Grid>
+                    {posts.map(post =>
 
-                            <img src={post.image} style={{ width: '200px', height: '200px', border: '1px solid gray' }} />
+                        <img src={post.image} style={{ width: '200px', height: '200px', border: '1px solid gray' }} />
 
-                        )}
-                    </Grid>
-                </Container></>}
+                    )}
+                </Grid>
+            </Container>
         </>
     )
 }
