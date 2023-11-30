@@ -11,10 +11,7 @@ const Create = () => {
   const fileInput = useRef();
 
   async function uploadData() {
-
-    console.log(process.env.REACT_APP_ACCOUNT_ID)
-    console.log(process.env.REACT_APP_API_KEY)
-
+    
     if (!caption || !fileInput.current.files[0]) {
 
       toast.warning('All fields required!', {
