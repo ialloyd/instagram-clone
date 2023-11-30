@@ -12,7 +12,8 @@ const Create = () => {
 
   async function uploadData() {
 
-    console.log(fileInput.current.files[0])
+    console.log(process.env.REACT_APP_ACCOUNT_ID)
+    console.log(process.env.REACT_APP_API_KEY)
 
     if (!caption || !fileInput.current.files[0]) {
 
