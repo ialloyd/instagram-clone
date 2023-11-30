@@ -25,9 +25,51 @@ const Signup = () => {
 
     async function userSignUp() {
 
-        if (!email || !password) {
+        if (!email || !password || !name) {
 
             toast.warning('All fields required!', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            return;
+        }
+        else if (!name.includes(' ')) {
+
+            toast.error(`Enter Full Name!`, {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            return;
+        }
+        else if (!email.includes('@')) {
+
+            toast.error(`Enter Vaild Email!`, {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            return;
+        }
+        else if (password.length < 8) {
+
+            toast.error(`Password should have atleast 8 characters!`, {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,
