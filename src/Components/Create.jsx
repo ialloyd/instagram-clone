@@ -71,7 +71,7 @@ const Create = () => {
   }
 
   async function createPost(request) {
-    // console.log(request)
+    
     try {
 
       const response = await axios.post('https://instagram-express-app.vercel.app/api/post/create', {

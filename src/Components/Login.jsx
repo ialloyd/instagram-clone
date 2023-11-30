@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { TextField, Button, Stack, Box, Typography } from '@mui/material';
 
-
 const Login = () => {
 
     const [cred, setCred] = useState({ email: '', password: '' });

@@ -55,7 +55,7 @@ const Signup = () => {
         }
         else if (!email.includes('@')) {
 
-            toast.error(`Enter Vaild Email!`, {
+            toast.error(`Enter Valid Email!`, {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,

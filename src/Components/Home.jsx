@@ -5,7 +5,7 @@ import { Container, Card, CardTop, CardImage, CardBottom, CommentSection, Styled
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
-
+import { toast } from 'react-toastify';
 
 const Home = () => {
 
@@ -15,16 +15,32 @@ const Home = () => {
 
     async function getAllPosts() {
 
-        const response = await axios.get('https://instagram-express-app.vercel.app/api/post/all-posts', {
-            headers: {
-                authorization: `Bearer ${userToken}`
-            }
-        });
+        try {
 
-        const limitedData = response.data.data.slice(0, 15);
-        setPosts(limitedData)
-        console.log(limitedData)
+            const response = await axios.get('https://instagram-express-app.vercel.app/api/post/all-posts', {
+                headers: {
+                    authorization: `Bearer ${userToken}`
+                }
+            });
 
+            const limitedData = response.data.data.slice(0, 15);
+            setPosts(limitedData)
+
+        }
+        catch(err){
+
+            toast.error(`${err.response.data.message}!`, {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+
+        }
     }
 
     useEffect(() => {

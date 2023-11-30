@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import { Container, Stat, Para, Grid } from '../styles/profile'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const Profile = () => {
 
@@ -12,14 +13,31 @@ const Profile = () => {
 
     async function viewMyPosts() {
 
-        const response = await axios.get('https://instagram-express-app.vercel.app/api/post/my-posts', {
-            headers: {
-                authorization: `Bearer ${token}`
-            }
-        })
+        try {
+            const response = await axios.get('https://instagram-express-app.vercel.app/api/post/my-posts', {
+                headers: {
+                    authorization: `Bearer ${token}`
+                }
+            })
 
-        console.log(response.data.data)
-        setPosts(response.data.data)
+            setPosts(response.data.data)
+
+        }
+        catch(err){
+
+            toast.error(`${err.response.data.message}!`, {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+
+        }
+
     }
 
     useEffect(() => { viewMyPosts() }, [])
